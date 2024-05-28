@@ -1151,11 +1151,7 @@ class SnowflakeV2Source(
             lastModified=(
                 TimeStamp(time=int(table.last_altered.timestamp() * 1000))
                 if table.last_altered is not None
-                else (
-                    TimeStamp(time=int(table.created.timestamp() * 1000))
-                    if table.created is not None
-                    else None
-                )
+                else None
             ),
             description=table.comment,
             qualifiedName=f"{db_name}.{schema_name}.{table.name}",
